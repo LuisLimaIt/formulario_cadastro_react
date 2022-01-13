@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
 
 export default function FormularioCadastro() {
     return (
@@ -18,8 +19,7 @@ export default function FormularioCadastro() {
             <label>Novidades</label>
             <input type="checkbox"/>
 
-            <button type='submit'>Cadastrar</button>
-
+            <Button variant="contained" color="primary" type='submit'>Cadastrar</Button>
         </form>
     )
 }
