@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
 
 export default function FormularioCadastro() {
-    let nome = "";
+
+    const [nome, setNome] = useState("");
+
     return (
         <form onSubmit={(e) => { 
             e.preventDefault();
@@ -10,10 +12,10 @@ export default function FormularioCadastro() {
         }}>
             <TextField
                 value={nome}
-                onChange={e => {
-                    nome = e.target.value;
-                    if(nome.length > 3) {
-                        nome = nome.substr(0,3);
+                onChange={(e) => {
+                    setNome(e.target.value);
+                    if(nome.length >= 3) {
+                        setNome(nome.substr(0,3))
                     }
                 }}
                 margin="normal"
