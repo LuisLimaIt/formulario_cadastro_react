@@ -1,17 +1,14 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 
 export default function FormularioCadastro() {
     return (
         <form>
-            <label>Nome</label>
-            <input type="text"/>
+            <TextField id="nome" label="Nome" variant="outlined" fullWidth />
             
-            <label>Sobrenome</label>
-            <input type="text"/>
+            <TextField id="sobrenome" label="Sobrenome" variant="outlined" fullWidth />
            
-            <label>CPF</label>
-            <input type="text"/>
+            <TextField id="cpf" label="CPF" type="text" variant="outlined" fullWidth />
            
             <label>Promoções</label>
             <input type="checkbox"/>
