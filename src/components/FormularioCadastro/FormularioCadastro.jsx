@@ -8,6 +8,7 @@ export default function FormularioCadastro( { enviarForm }) {
     const [cpf, setCpf] = useState("");
     const [promocoes, setPromocoes] = useState(true);
     const [novidades, setNovidades] = useState(true);
+    const [erros, setErros] = useState({cpf:{valido:true, text:""}});
 
     return (
         <form onSubmit={(e) => { 
@@ -43,6 +44,9 @@ export default function FormularioCadastro( { enviarForm }) {
                 onChange={(e) => {
                     setCpf(e.target.value);
                 }}
+                onBlur={e => setErros({cpf:{valido:false, texto:"Digite um CPF válido"}})}
+                error={!erros.cpf.valido}
+                helperText={erros.cpf.texto}
                 margin="normal"
                 id="cpf"
                 label="CPF"
