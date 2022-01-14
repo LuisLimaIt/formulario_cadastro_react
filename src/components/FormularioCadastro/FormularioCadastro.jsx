@@ -5,20 +5,19 @@ export default function FormularioCadastro() {
 
     const [nome, setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("");
+    const [cpf, setCpf] = useState("");
+    const [promocoes, setPromocoes] = useState(true);
+    const [novidades, setNovidades] = useState(true);
 
     return (
         <form onSubmit={(e) => { 
             e.preventDefault();
-            console.log(nome, sobrenome); 
+            console.log({nome, sobrenome, cpf, promocoes, novidades}); 
         }}>
             <TextField
                 value={nome}
                 onChange={(e) => {
-                    let tmpNome = e.target.value;
-                    if (tmpNome.length >= 3) {
-                        tmpNome = tmpNome.substr(0,3);
-                    }
-                    setNome(tmpNome);
+                    setNome(e.target.value);
                 }}
                 margin="normal"
                 id="nome"
@@ -40,6 +39,10 @@ export default function FormularioCadastro() {
             />
 
             <TextField
+                value={cpf}
+                onChange={(e) => {
+                    setCpf(e.target.value);
+                }}
                 margin="normal"
                 id="cpf"
                 label="CPF"
@@ -50,14 +53,30 @@ export default function FormularioCadastro() {
 
             <FormControlLabel
                 label="Promoções"
-                control={<Switch name="promocoes" defaultChecked color="primary"
-                />}
+                control={
+                    <Switch 
+                        checked={promocoes}
+                        onChange={e => 
+                            setPromocoes(e.target.checked)
+                        }
+                        name="promocoes" 
+                        color="primary"
+                    />
+                }
             />
 
             <FormControlLabel
                 label="Novidades"
-                control={<Switch name="novidades" defaultChecked color="primary"
-                />}
+                control={
+                    <Switch 
+                        checked={novidades}
+                        onChange={e => 
+                            setNovidades(e.target.checked)
+                        }
+                        name="novidades" 
+                        color="primary"
+                    />
+                }
             />
 
             <Button variant="contained" color="primary" type='submit'>Cadastrar</Button>
