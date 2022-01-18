@@ -1,4 +1,3 @@
-import { Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import DadosEntrega from './DadosEntrega';
 import DadosPessoais from './DadosPessoais';
@@ -10,10 +9,10 @@ export default function FormularioCadastro( { enviarForm, validarCPF }) {
     const formularios =[
         <DadosUsuario aoEnviar={proximo} />, 
         <DadosPessoais aoEnviar={proximo} validarCPF={validarCPF} />,
-        <DadosEntrega enviarForm={enviarForm} />
+        <DadosEntrega aoEnviar={enviarForm} />
     ];
 
-    function proximo() {
+    function proximo(dados) {
         setEtapaAtual(etapaAtual+1);
     }
 

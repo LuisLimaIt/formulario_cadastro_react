@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
 
-export default function DadosPessoais( { enviarForm, validarCPF }) {
+export default function DadosPessoais( { aoEnviar, validarCPF }) {
 
     const [nome, setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("");
@@ -13,7 +13,7 @@ export default function DadosPessoais( { enviarForm, validarCPF }) {
     return (
         <form onSubmit={(e) => { 
             e.preventDefault();
-            enviarForm({nome, sobrenome, cpf, promocoes,novidades})
+            aoEnviar({nome, sobrenome, cpf, promocoes,novidades})
         }}>
             <TextField
                 value={nome}
