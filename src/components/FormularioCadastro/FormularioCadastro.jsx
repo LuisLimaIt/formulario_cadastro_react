@@ -4,7 +4,7 @@ import DadosEntrega from './DadosEntrega';
 import DadosPessoais from './DadosPessoais';
 import DadosUsuario from './DadosUsuario';
 
-export default function FormularioCadastro( { enviarForm, validarCPF }) {
+export default function FormularioCadastro( { enviarForm, validacoes }) {
     const [etapaAtual, setEtapaAtual] = useState(0);
     const [dadosColetados, setDados] = useState({});
 
@@ -15,10 +15,10 @@ export default function FormularioCadastro( { enviarForm, validarCPF }) {
     });
 
     const formularios =[
-        <DadosUsuario aoEnviar={coletarDados} />, 
-        <DadosPessoais aoEnviar={coletarDados} validarCPF={validarCPF} />,
-        <DadosEntrega aoEnviar={coletarDados} />,
-        <Typography variant="h5">Cadastro realizado com sucesso! 🥳</Typography>
+        <DadosUsuario aoEnviar={coletarDados} validacoes={validacoes} />, 
+        <DadosPessoais aoEnviar={coletarDados} validacoes={validacoes} />,
+        <DadosEntrega aoEnviar={coletarDados} validacoes={validacoes} />,
+        <Typography variant="h5">Cadastro realizado com sucesso! :)</Typography>
     ];
 
     function coletarDados(dados) {

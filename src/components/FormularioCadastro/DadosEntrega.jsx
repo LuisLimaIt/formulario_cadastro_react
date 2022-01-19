@@ -1,7 +1,7 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 
-export default function DadosEntrega( { aoEnviar}) {
+export default function DadosEntrega( { aoEnviar }) {
     const [cep, setCep] = useState("");
     const [endereco, setEndereco] = useState("");
     const [numero, setNumero] = useState("");
