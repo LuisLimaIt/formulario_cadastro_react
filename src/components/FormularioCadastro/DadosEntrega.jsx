@@ -17,6 +17,7 @@ export default function DadosEntrega( { aoEnviar }) {
                 value={cep}
                 onChange={e => setCep(e.target.value)}
                 id="cep" 
+                name="cep" 
                 label="CEP" 
                 type="number" 
                 variant="outlined"
@@ -26,6 +27,7 @@ export default function DadosEntrega( { aoEnviar }) {
                 value={endereco}
                 onChange={e => setEndereco(e.target.value)}
                 id="endereco" 
+                name="endereco" 
                 label="Endereço" 
                 type="text" 
                 variant="outlined"
@@ -36,6 +38,7 @@ export default function DadosEntrega( { aoEnviar }) {
                 value={numero}
                 onChange={e => setNumero(e.target.value)}
                 id="numero" 
+                name="numero" 
                 label="Número" 
                 type="number" 
                 variant="outlined"
@@ -45,6 +48,7 @@ export default function DadosEntrega( { aoEnviar }) {
                 value={estado}
                 onChange={e => setEstado(e.target.value)}
                 id="estado" 
+                name="estado" 
                 label="Estado" 
                 type="text" 
                 variant="outlined"
@@ -54,6 +58,7 @@ export default function DadosEntrega( { aoEnviar }) {
                 value={cidade}
                 onChange={e => setCidade(e.target.value)}
                 id="cidade" 
+                name="cidade" 
                 label="Cidade" 
                 type="text" 
                 variant="outlined"

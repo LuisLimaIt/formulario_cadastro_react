@@ -8,30 +8,43 @@ export default function DadosPessoais( { aoEnviar, validacoes }) {
     const [cpf, setCpf] = useState("");
     const [promocoes, setPromocoes] = useState(true);
     const [novidades, setNovidades] = useState(true);
-    const [erros, setErros] = useState({cpf:{valido:true, text:""}});
+    
+    const [erros, setErros] = useState({ cpf:{ valido:true, texto:"" }, nome:{ valido:true, texto:"" } });
 
-    function validarCampos(e) {
-        console.log(e.target)
+    function validarCampos(e) {   
         const { name, value } = e.target;
         const novoEstado = { ...erros }
         novoEstado[name] = validacoes[name](value);
         setErros(novoEstado)
-        console.log(novoEstado)
     }
 
+    function possoEnviar() {
+        for(let campo in erros) {
+            if(!erros[campo].valido) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     return (
         <form onSubmit={(e) => { 
             e.preventDefault();
-            aoEnviar({nome, sobrenome, cpf, promocoes,novidades})
+            if(possoEnviar()) {
+                aoEnviar({nome, sobrenome, cpf, promocoes,novidades})
+            }
         }}>
             <TextField
                 value={nome}
                 onChange={(e) => {
                     setNome(e.target.value);
                 }}
+                onBlur={validarCampos}
+                error={!erros.nome.valido}
+                helperText={erros.nome.texto}
                 margin="normal"
                 id="nome"
+                name="nome"
                 label="Nome"
                 variant="outlined"
                 fullWidth
@@ -44,6 +57,7 @@ export default function DadosPessoais( { aoEnviar, validacoes }) {
                 }}
                 margin="normal"
                 id="sobrenome"
+                name="sobrenome"
                 label="Sobrenome"
                 variant="outlined"
                 fullWidth
@@ -94,7 +108,7 @@ export default function DadosPessoais( { aoEnviar, validacoes }) {
                 }
             />
 
-            <Button variant="contained" color="primary" type='submit'>Cadastrar</Button>
+            <Button variant="contained" color="primary" type='submit'>Próximo</Button>
         </form>
     );
 }
